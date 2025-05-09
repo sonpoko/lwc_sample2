@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="カスタムテーブル (Lightning Datatableなし)">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr>
+                    <th scope="col">発注状況</th>
+                    <th scope="col">納期</th>
+                    <th scope="col">発注先</th>
+                    <th scope="col">納入先</th>
+                    <th scope="col">製品リスト</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={data} for:item="item">
+                    <tr key={item.id}>
+                        <td>{item.status}</td>
+                        <td>{item.limit}</td>
+                        <td>{item.toOrder}</td>
+                        <td>{item.toDeliver}</td>
+                        <td>{item.productList}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </lightning-card>
+        <div class="footer">
+            <h2>▲：既に発注済のため、処理対象外です。</h2>
+            <h2>●：未発注のため、処理対象です。</h2>
+            <h2>×：納期・発注先・発送先が入力されていないため、処理対象外です。</h2>
+            <button class="btn btn-cancel">キャンセル</button>
+            <button class="btn btn-error">発注できません</button>
+    </div>
+</template>
